@@ -1,0 +1,30 @@
+{
+  "name": "i-love-knitting",
+  "description": "Simple one page app site",
+  "main": "",
+  "authors": [
+    "Maxim Grishkov <mocyk@meta.ua>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/massimo-ua/i-love-knitting",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-mocks": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "angular-sanitize": "^1.5.0",
+    "angular-translate": "^2.9.2",
+    "angular-ui-router": "^0.2.18",
+    "satellizer": "^0.14.0"
+  }
+}
