@@ -1,0 +1,24 @@
+<div class="row">
+<div class="col-sm-10-offset-1 col-lg-10-offset-1 col-md-10-offset-1">
+  <div class="thumbnail">
+                      <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+                      <div class="caption-full">
+                          <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2 }}</h4>
+                          <h4>{{item.title}}
+                          </h4>
+                          <p>{{ item.content }}</p>
+                      </div>
+                      <div class="ratings">
+                          <p class="pull-right">3 comments</p>
+                          <p>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star-empty"></span>
+                              4.0 stars
+                          </p>
+                      </div>
+                  </div>
+    </div>
+</div>

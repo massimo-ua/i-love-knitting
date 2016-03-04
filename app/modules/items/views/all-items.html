@@ -1,0 +1,28 @@
+<div class="row">
+
+    <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="item in allItems track by $index">
+        <div class="thumbnail">
+            <div class="caption">
+            <p class="pull-right small">{{ item.datePublished | date: 'dd.MM.yyyy'}}</p>
+            <p class="small">Author: {{ item.author }}</p>
+            </div>
+            <img src="http://placehold.it/320x150" alt="">
+            <div class="caption">
+                <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2}}</h4>
+                <h4><a ui-sref="singleItem({id:item._id, permalink:item.permalink})">{{ item.title }}</a></h4>
+                <p>{{ item.content }}</p>
+            </div>
+            <div class="ratings">
+                <p class="pull-right">15 reviews</p>
+                <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
