@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5 class="text-info">Comments:</h5>
+      </div>
+  </div>
+  <!-- comment form here -->
+    <div class="thumbnail">
+    <ng-form id="commentForm" name="commentForm" >
+    <div class="row">
+      <div class="col-sm-12">
+      <div ng-class="{'has-error': commentForm.content.$dirty && commentForm.content.$invalid}" class="form-group" >
+        <label for="content" class="text-info">Comment Text</label>
+        <textarea name="content" ng-required="true" rows="2" class="form-control" ng-model="comment.content" placeholder="Type your comment here"></textarea>
+        <div class="help-block error" ng-show="commentForm.content.$dirty && commentForm.content.$error.required">Please, fill up comment field to make a comment</div>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+      <div ng-class="{'has-error': commentForm.author.$dirty && commentForm.author.$invalid}" class="form-group" >
+        <label for="author" class="text-info">Comment Author</label>
+        <input name="author" ng-required="true" type="text" ng-model="comment.author" class="form-control" placeholder="Type your name here" />
+      <div class="help-block error" ng-show="commentForm.author.$dirty && commentForm.author.$error.required">Please, fill up your name</div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+  <div class="form-group">
+    <input type="submit" ng-disabled="commentForm.$invalid" value="Add Comment" ng-click="saveComment()" class="btn btn-default" />
+  </div>
+</div>
+</div>
+    </ng-form>
+</div>
+<!-- comment form end -->
+<!-- comments list here -->
+
+      <div class="thumbnail" ng-repeat="comment in itemInstance.comments">
+        <div class="row">
+          <div >
+            <div class="col-sm-12">
+              <div class="content">{{comment.content}}</div>
+              <div class="text-info">By: <span>{{comment.author}}</span><span class="pull-right">| On: {{comment.datePublished | date: 'dd.MM.yyyy'}}</span></div>
+            </div>
+          </div>
+      </div>
+    </div>
+<!-- comments list end -->
+  </div>
+</div>
