@@ -3,9 +3,10 @@ angular.module('app.services',[])
 .factory('Api', ['$resource', 'API_PREFIX', function($resource, API_PREFIX){
   return {
     Item: $resource(API_PREFIX+'/items/:id', { id: '@_id' }, {
-      update: {
-        method: 'PUT'
-      }
+      update: { method: 'PUT' }
+    }),
+    Comment: $resource(API_PREFIX+'/items/:id/comments', { id: '@item' }, {
+      save:   { method: 'POST' },
     })
   }
 }]);
