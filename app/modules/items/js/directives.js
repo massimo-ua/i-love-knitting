@@ -24,4 +24,27 @@ angular.module('app.items.directives', [])
     },
     templateUrl: 'modules/items/views/comments.html'
   }
+}])
+.directive('itemRate', ['Api', function(Api){
+  return {
+    restrict: 'AEC',
+    scope: {
+      itemInstance: '='
+    },
+    replace: true,
+    link: function(scope, elem, attrs) {
+      scope.Vote = function(i) {
+        var newRate = new Api.Rating();
+        newRate.item = scope.itemInstance._id;
+        newRate.value = parseInt(i);
+        newRate.$save(function(response) {
+            scope.itemInstance.rates[0].avgRating = response.data[0].avgRating;
+        },
+      function(err) {
+        console.log(err);
+      });
+      }
+    },
+    templateUrl: 'modules/items/views/rating.html'
+  }
 }]);

@@ -13,14 +13,8 @@
                 <p>{{ item.content }}</p>
             </div>
             <div class="ratings">
-                <p class="pull-right">Comments: {{ item.comments.length }}</p>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </p>
+                <div class="pull-right">Comments: {{ item.comments.length }}</div>
+                <item-rate item-instance="item"></item-rate>
             </div>
         </div>
     </div>

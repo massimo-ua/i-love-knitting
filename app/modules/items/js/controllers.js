@@ -7,5 +7,7 @@ angular.module('app.items.controllers', [])
   $scope.closeItem = function() {
     $state.go('allItems');
   }
-  $scope.item = Api.Item.get({ id:$stateParams.id });
+  Api.Item.get({ id:$stateParams.id }, function(response) {
+    $scope.item = response.data;
+  });
 }]);

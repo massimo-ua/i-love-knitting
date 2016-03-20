@@ -7,6 +7,9 @@ angular.module('app.services',[])
     }),
     Comment: $resource(API_PREFIX+'/items/:id/comments', { id: '@item' }, {
       save:   { method: 'POST' },
+    }),
+    Rating: $resource(API_PREFIX+'/items/:id/ratings', { id: '@item' }, {
+      save:   { method: 'POST' },
     })
   }
 }]);
