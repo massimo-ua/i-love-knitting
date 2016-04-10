@@ -1,0 +1,18 @@
+<div class="row">
+<table class="table table-striped">
+<tr>
+  <th>#</th>
+  <th>Date</th>
+  <th>Title</th>
+  <th>Author</th>
+  <th>Price</th>
+</tr>
+<tr ng-repeat="item in itemsList track by $index">
+  <td>{{ item._id }}</td>
+  <td>{{ item.datePublished | date: 'dd.MM.yyyy'}}</td>
+  <td>{{ item.title }}</td>
+  <td>{{ item.author }}</td>
+  <td>{{ item.price/100 | currency: '&#8372': 2}}</td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+  <form name="Form" ng-submit="saveItem()" class="form-horizontal" novalidate role="form">
+<div class="col-sm-12">     
+      <div class="form-group" ng-class="{'has-error': Form.title.$dirty && Form.title.$invalid}">
+        <label for="title" class="col-sm-2 control-label">Item Title</label>
+        <div class="col-sm-10">
+          <input type="text" name="title" ng-model="item.title" ng-required="true" class="form-control" id="title" placeholder="Title">
+          <p class="help-block error" ng-show="Form.title.$dirty && Form.title.$invalid">Title Is Mandatory</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error': Form.content.$dirty && Form.content.$invalid}">
+        <label for="content" class="col-sm-2 control-label">Item Content</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" rows="3" name="content" ng-model="item.content" ng-required="true" class="form-control" id="content" placeholder="Enter Content Here"></textarea>
+          <p class="help-block error" ng-show="Form.content.$dirty && Form.content.$invalid">Content Is Mandatory</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error': Form.price.$dirty && Form.price.$invalid}">
+        <label for="price" class="col-sm-2 control-label">Item Price</label>
+        <div class="col-sm-10">
+          <input type="number" name="price" ng-model="item.price" ng-required="true" min="0.01" class="form-control" id="price" placeholder="0.01">
+          <p class="help-block error" ng-show="Form.price.$dirty && Form.price.$invalid">Price Is Mandatory. Minimum value 0.01</p>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error': Form.author.$dirty && Form.author.$invalid}">
+        <label for="author" class="col-sm-2 control-label">Item Author</label>
+        <div class="col-sm-10">
+          <input type="number" name="author" ng-model="item.author" ng-required="true" min="1" class="form-control" id="author" placeholder="Enter Author ID">
+          <p class="help-block error" ng-show="Form.author.$dirty && Form.author.$invalid">Author ID Is Mandatory. Minimum Value 1</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-success" ng-disabled="Form.$invalid">Save Item</button>
+        </div>
+      </div>
+      </div>
+        </form>
+</div>
