@@ -13,6 +13,11 @@ angular.module('app.admin',['app.admin.controllers'])
     controller: 'AdminNewItemController',
     templateUrl: '/modules/admin/views/new-item.html'
   })
+  .state('admin.editItem', {
+    url: '/items/:id/edit',
+    controller: 'AdminEditItemController',
+    templateUrl: '/modules/admin/views/edit-item.html'
+  })
   .state('admin.AllItemsView', {
     url: '',
     controller: 'AdminItemsListController',

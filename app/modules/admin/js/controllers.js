@@ -14,18 +14,24 @@ angular.module('app.admin.controllers',[])
     $scope.item.$save(function(response){
       if(response.status == 'ERR') {
         alert('There was an error when save Item');
+        console.log(response);
       } 
       $state.go('admin.AllItemsView');
     });
   }
 }])
+.controller('AdminEditItemController', ['$scope', 'Api', '$state', function($scope, Api, $state) {
+  alert('AdminEditItemController reached!');
+}])
 .controller('AdminItemsListController', ['$scope','Api', '$state', function($scope, Api, $state) {
-	Api.Item.query({}, function(result){
-  		if(result.status == 'OK') {
-  			$scope.itemsList = result.data;
-  		}
-  		else {
-  			console.log(result.status);
-  		}
+	Api.Item.query({}, function(response){
+  			$scope.itemsList = response;
   });
+  $scope.itemDelete = function(item) {
+    item.$delete(function(response) {
+        $state.go('admin.AllItemsView',undefined,{
+          reload: true
+        });
+    });
+  }
 }]);

@@ -3,7 +3,6 @@ angular.module('app.services',[])
 .factory('Api', ['$resource', 'API_PREFIX', function($resource, API_PREFIX){
   return {
     Item: $resource(API_PREFIX+'/items/:id', { id: '@_id' }, {
-      query:  { method: 'GET', isArray: false },
       update: { method: 'PUT' }
     }),
     Comment: $resource(API_PREFIX+'/items/:id/comments', { id: '@item' }, {
