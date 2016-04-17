@@ -9,8 +9,11 @@ angular.module('app.admin.controllers',[])
   $scope.buttonText = "Create";
   $scope.saveItem = function() {
     $scope.buttonText = "Saving...";
-    $scope.item.$save(function(){
-      $state.go('admin.itemsViewAll');
+    $scope.item.$save(function(response){
+      if(response.status == 'ERR') {
+        alert('There was an error when save Item');
+      } 
+      $state.go('admin.AllItemsView');
     });
   }
 }])
