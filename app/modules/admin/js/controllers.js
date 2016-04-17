@@ -8,6 +8,8 @@ angular.module('app.admin.controllers',[])
   $scope.item = new Api.Item();
   $scope.buttonText = "Create";
   $scope.saveItem = function() {
+    //convert price to int to meet Database schema
+    $scope.item.price = Math.round($scope.item.price * 100);
     $scope.buttonText = "Saving...";
     $scope.item.$save(function(response){
       if(response.status == 'ERR') {
