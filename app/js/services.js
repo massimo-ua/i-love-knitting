@@ -14,3 +14,9 @@ angular.module('app.services',[])
   }
 }]);
 angular.module('app.services').value('API_PREFIX','http://localhost:3000/api');
+angular.module('app.services')
+.service('popupService', ['$window', function($window) {
+  this.showPopup = function(message) {
+    return $window.confirm(message);
+  }
+}])

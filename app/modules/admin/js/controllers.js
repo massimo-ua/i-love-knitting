@@ -23,15 +23,17 @@ angular.module('app.admin.controllers',[])
 .controller('AdminEditItemController', ['$scope', 'Api', '$state', function($scope, Api, $state) {
   alert('AdminEditItemController reached!');
 }])
-.controller('AdminItemsListController', ['$scope','Api', '$state', function($scope, Api, $state) {
+.controller('AdminItemsListController', ['$scope','Api', '$state', 'popupService', function($scope, Api, $state, popupService) {
 	Api.Item.query({}, function(response){
   			$scope.itemsList = response;
   });
   $scope.itemDelete = function(item) {
-    item.$delete(function(response) {
+    if(popupService.showPopup('Really delete this item #'+item._id+'\nTitle: "'+item.title+'"?')) {
+      item.$delete(function(response) {
         $state.go('admin.AllItemsView',undefined,{
           reload: true
         });
-    });
+      });
+    }
   }
 }]);
