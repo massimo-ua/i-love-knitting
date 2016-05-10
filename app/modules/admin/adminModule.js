@@ -1,5 +1,5 @@
 'use strict'
-angular.module('app.admin',['app.admin.controllers'])
+angular.module('app.admin',['app.admin.controllers','app.admin.directives'])
 .config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
   $stateProvider
   .state('admin', {

@@ -1,0 +1,21 @@
+<div class="row" ng-if="uploader">
+
+                <div class="col-md-4">
+
+                    <div ng-show="uploader.isHTML5">
+                        <!-- 3. nv-file-over uploader="link" over-class="className" -->
+                        <div class="well drop-box" nv-file-drop uploader="uploader">
+                            Drop files here
+                        </div>
+                    </div>
+
+                    <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                    <div>
+                        <input type="file" nv-file-select uploader="uploader" multiple title=" "/>
+                    </div>
+                </div>
+                <div class="col-md-8" style="margin-bottom: 10px">
+                    <div ng-repeat="image in item.images">
+                        {{ $index }} {{ image.filename }} {{ image._id }} {{ image.mimetype }}
+                    </div>
+                </div>

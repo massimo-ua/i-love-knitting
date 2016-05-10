@@ -19,4 +19,4 @@ angular.module('app.services')
   this.showPopup = function(message) {
     return $window.confirm(message);
   }
-}])
+}]);

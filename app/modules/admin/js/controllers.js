@@ -6,6 +6,7 @@ angular.module('app.admin.controllers',[])
 .controller('AdminNewItemController',['$scope', '$state', 'Api', function($scope, $state, Api){
 	$scope.Form = {};
   $scope.item = new Api.Item();
+  $scope.item.images = [];
   $scope.buttonText = "Create";
   $scope.saveItem = function() {
     //convert price to int to meet Database schema
