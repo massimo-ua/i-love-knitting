@@ -1,6 +1,6 @@
 <div class="row" ng-if="uploader">
 
-                <div class="col-md-4">
+                <div class="col-md-3">
 
                     <div ng-show="uploader.isHTML5">
                         <!-- 3. nv-file-over uploader="link" over-class="className" -->
@@ -14,8 +14,13 @@
                         <input type="file" nv-file-select uploader="uploader" multiple title=" "/>
                     </div>
                 </div>
-                <div class="col-md-8" style="margin-bottom: 10px">
-                    <div ng-repeat="image in item.images">
-                        {{ $index }} {{ image.filename }} {{ image._id }} {{ image.mimetype }}
-                    </div>
+                <div class="col-md-9" style="margin-bottom: 10px">
+                    <table class="table table-condensed">
+                    <tr ng-repeat="image in item.images">
+                        <td class="col-md-8">{{ $index + 1 }} {{ image.filename }}</td>
+                        <td class="col-md-4">
+                            <a class="text-danger" ng-click="removeImage($index)">Remove</a>
+                        </td>
+                    </tr>
+                    </table>
                 </div>

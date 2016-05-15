@@ -1,6 +1,6 @@
 'use strict'
 angular.module('app.admin.directives',['angularFileUpload'])
-.directive('fileUpload', ['FileUploader', function(FileUploader) {
+.directive('fileUpload', ['FileUploader', '$http', function(FileUploader, $http) {
 	return {
 		restrict: 'AEC',
 		scope: false,
@@ -22,6 +22,18 @@ angular.module('app.admin.directives',['angularFileUpload'])
             	}
         	});
 
+        	// FUNCTIONS
+        	scope.removeImage = function(index) {
+        		$http.delete('http://127.0.0.1:3000/files/' + scope.item.images[index]._id)
+        		.then(function(response){
+        			console.log(response);
+        			scope.item.images.splice(index,1);
+        		},
+        		function(err) {
+        			console.log(err);
+        		});
+        		
+        	}
         	// CALLBACKS
 
         	uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
