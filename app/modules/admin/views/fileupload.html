@@ -5,7 +5,7 @@
                     <div ng-show="uploader.isHTML5">
                         <!-- 3. nv-file-over uploader="link" over-class="className" -->
                         <div class="well drop-box" nv-file-drop uploader="uploader">
-                            Drop files here
+                            Drop images here
                         </div>
                     </div>
 
@@ -16,8 +16,9 @@
                 </div>
                 <div class="col-md-9" style="margin-bottom: 10px">
                     <table class="table table-condensed">
-                    <tr ng-repeat="image in item.images">
-                        <td class="col-md-8">{{ $index + 1 }} {{ image.filename }}</td>
+                    <tr ng-repeat="image in uploaded">
+                        <td class="col-md-2">{{ $index + 1 }}</td>
+                        <td class="col-md-6">{{ image.filename }}</td>
                         <td class="col-md-4">
                             <a class="text-danger" ng-click="removeImage($index)">Remove</a>
                         </td>

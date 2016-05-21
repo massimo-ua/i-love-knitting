@@ -11,7 +11,7 @@ angular.module('app.admin.directives',['angularFileUpload'])
             	autoUpload: true,
             	removeAfterUpload: true
         	});
-
+        	scope.uploaded = [];
         	// FILTERS
 
         	uploader.filters.push({
@@ -24,10 +24,11 @@ angular.module('app.admin.directives',['angularFileUpload'])
 
         	// FUNCTIONS
         	scope.removeImage = function(index) {
-        		$http.delete('http://127.0.0.1:3000/files/' + scope.item.images[index]._id)
+        		$http.delete('http://127.0.0.1:3000/files/' + scope.uploaded[index]._id)
         		.then(function(response){
         			console.log(response);
         			scope.item.images.splice(index,1);
+        			scope.uploaded.splice(index,1);
         		},
         		function(err) {
         			console.log(err);
@@ -65,7 +66,8 @@ angular.module('app.admin.directives',['angularFileUpload'])
         	};
         	uploader.onCompleteItem = function(fileItem, response, status, headers) {
             	console.log(response);
-            	scope.item.images.push(response.savedFile);
+            	scope.item.images.push(response.savedFile._id);
+            	scope.uploaded.push(response.savedFile);
         	};
         	uploader.onCompleteAll = function() {
             	console.info('onCompleteAll');
