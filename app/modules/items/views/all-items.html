@@ -6,8 +6,7 @@
             <p class="pull-right small">{{ item.datePublished | date: 'dd.MM.yyyy'}}</p>
             <p class="small">Author: {{ item.author }}</p>
             </div>
-            <img ng-if="item.images[0]._id" ng-src="http://127.0.0.1:3000/files/{{ item.images[0]._id }}?kind=th" alt="">
-            <img = ng-if="!item.images[0]._id" ng-src="http://placehold.it/320x150" alt="">
+            <img ng-src="http://127.0.0.1:3000/files/{{ item.images[0]._id || 'noimage' }}?kind=th" alt="">
             <div class="caption">
                 <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2}}</h4>
                 <h4><a ui-sref="singleItem({id:item._id, permalink:item.permalink})">{{ item.title | strTruncate:true:70 }}</a></h4>

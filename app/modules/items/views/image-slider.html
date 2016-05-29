@@ -1,0 +1,13 @@
+<div class="image-slider">
+  <div class="slide text-center" ng-repeat="slide in slides" ng-show="slide.visible">
+    <img ng-src="http://127.0.0.1:3000/files/{{ slide._id || 'noimage' }}?kind=rs" />
+  </div>
+  <div class="arrows">
+    <a ng-click="prev()">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a ng-click="next()">
+      <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+    </a>
+  </div>
+</div>

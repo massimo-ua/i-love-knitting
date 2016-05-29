@@ -1,5 +1,5 @@
 'use strict'
-angular.module('app.items.controllers', [])
+angular.module('app.items.controllers', ['ngAnimate'])
 .controller('allItemsController', ['$scope', 'Api', function($scope, Api) {
   Api.Item.query({},
   	function(response){
@@ -13,5 +13,8 @@ angular.module('app.items.controllers', [])
   }
   Api.Item.get({ id:$stateParams.id }, function(response) {
     $scope.item = response.data;
+    if($scope.item.images != undefined) {
+      $scope.item.images[0].visible = true;
+    }
   });
 }]);

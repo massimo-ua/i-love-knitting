@@ -47,4 +47,31 @@ angular.module('app.items.directives', [])
     },
     templateUrl: 'modules/items/views/rating.html'
   }
+}])
+.directive('slider', [function() {
+  return {
+    restrict: 'AEC',
+    replace: true,
+    scope: {
+      slides: '='
+    },
+    link: function(scope, elem, attr) {
+      scope.currentIndex = 0;
+      scope.next = function() {
+        scope.currentIndex < scope.slides.length - 1 ? scope.currentIndex++ : scope.currentIndex = 0;
+      };
+      scope.prev = function() {
+        scope.currentIndex > 0 ? scope.currentIndex-- : scope.currentIndex = scope.slides.length - 1;
+      };
+      scope.$watch('currentIndex', function() {
+        if(scope.slides != undefined) {
+          scope.slides.forEach(function(slide) {
+          slide.visible = false;
+          });
+          scope.slides[scope.currentIndex].visible = true;
+        }
+      });
+    },
+    templateUrl: 'modules/items/views/image-slider.html'
+  }
 }]);
