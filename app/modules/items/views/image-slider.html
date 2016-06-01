@@ -2,7 +2,7 @@
   <div class="slide text-center" ng-repeat="slide in slides" ng-show="slide.visible">
     <img ng-src="http://127.0.0.1:3000/files/{{ slide._id || 'noimage' }}?kind=rs" />
   </div>
-  <div class="arrows">
+  <div class="arrows" ng-if="slides.length > 1">
     <a ng-click="prev()">
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>

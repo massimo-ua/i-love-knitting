@@ -12,7 +12,7 @@ angular.module('app.items.controllers', ['ngAnimate'])
     $state.go('allItems');
   }
   Api.Item.get({ id:$stateParams.id }, function(response) {
-    $scope.item = response.data;
+    $scope.item = response;
     if($scope.item.images != undefined) {
       $scope.item.images[0].visible = true;
     }

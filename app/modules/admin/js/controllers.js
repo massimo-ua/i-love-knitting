@@ -21,8 +21,23 @@ angular.module('app.admin.controllers',[])
     });
   }
 }])
-.controller('AdminEditItemController', ['$scope', 'Api', '$state', function($scope, Api, $state) {
-  alert('AdminEditItemController reached!');
+.controller('AdminEditItemController', ['$scope', 'Api', '$stateParams', '$state', function($scope, Api, $stateParams, $state) {
+  Api.Item.get({id:$stateParams.id}, function(response) {
+    $scope.item = response;
+    $scope.item.rates = undefined;
+    $scope.item.comments = undefined;
+    $scope.item.price = Math.round($scope.item.price / 100, 2);
+    $scope.saveItem = function() {
+      $scope.item.price = Math.round($scope.item.price * 100);
+      $scope.buttonText = "Updating...";
+      $scope.item.$update(function(response) {
+        console.log(response);
+        $state.go('admin.AllItemsView');
+      });
+    }
+  });
+  
+  $scope.buttonText = "Update";
 }])
 .controller('AdminItemsListController', ['$scope','Api', '$state', 'popupService', function($scope, Api, $state, popupService) {
 	Api.Item.query({}, function(response){
