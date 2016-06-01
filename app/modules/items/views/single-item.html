@@ -1,19 +1,18 @@
 <div class="row">
 <div class="col-sm-10 col-sm-offset-1">
   <div class="thumbnail">
-                      <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-                      <div class="caption-full">
-                          <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2 }}</h4>
-                          <h4>{{item.title}}
-                          </h4>
-                          <p>{{ item.content }}</p>
-                      </div>
-                      <div class="ratings">
-                          <div class="pull-right">Comments: {{ item.comments.length }}</div>
-                          <item-rate item-instance="item"></item-rate>
-                          <div>{{rating}}</div>
-                      </div>
-                  </div>
+      <slider ng-if="item.images.length > 0" slides="item.images"></slider>
+        <div class="caption-full">
+          <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2 }}</h4>
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.content }}</p>
+        </div>
+        <div class="ratings">
+          <div class="pull-right">Comments: {{ item.comments.length }}</div>
+          <item-rate item-instance="item"></item-rate>
+          <div>{{rating}}</div>
+        </div>
+      </div>
     </div>
 </div>
 <item-comments item-instance="item"></item-comments>

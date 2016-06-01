@@ -1,2 +1,24 @@
 .nav-pills { padding-top: 5px; }
 .nav-bottom-hr { margin-top:5px !important; color: #337ab7; height: 1px; background-color: #337ab7; }
+.all-items-list-item-block { min-height: 450px; }
+.drop-box {background-color: #F8F8F8; border: 5px dashed #DDD; height: 180px; width: 180px; margin: 5px; padding: 10px; text-align: center;}
+.slide { float: none; margin: 0 auto; }
+.slide.ng-hide-add,
+.slide.ng-hide-remove {
+  -webkit-transition: all linear 0s;
+  -moz-transition: all linear 0s;
+  -o-transition: all linear 0s;
+  transition: all linear 0s;
+  display: block!important;
+}
+.slide.ng-hide-add.ng-hide-add-active,
+.slide.ng-hide-remove {
+  opacity: 0;
+}
+.slide.ng-hide-add,
+.slide.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+.pull-right {
+  float: right !important;
+}

@@ -1,14 +1,9 @@
 'use strict'
-angular.module('app.items.controllers', [])
+angular.module('app.items.controllers', ['ngAnimate'])
 .controller('allItemsController', ['$scope', 'Api', function($scope, Api) {
   Api.Item.query({},
-  	function(result){
-  		if(result.status == 'OK') {
-  			$scope.allItems = result.data;
-  		}
-  		else {
-  			console.log(result.status);
-  		}
+  	function(response){
+  			$scope.allItems = response;
   });
   
 }])
@@ -17,6 +12,9 @@ angular.module('app.items.controllers', [])
     $state.go('allItems');
   }
   Api.Item.get({ id:$stateParams.id }, function(response) {
-    $scope.item = response.data;
+    $scope.item = response;
+    if($scope.item.images != undefined) {
+      $scope.item.images[0].visible = true;
+    }
   });
 }]);
