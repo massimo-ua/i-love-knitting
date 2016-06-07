@@ -1,6 +1,6 @@
 'use strict'
 angular.module('app.items',['app.items.controllers','app.items.directives'])
-.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('allItems', {
     url: '/items',
@@ -11,5 +11,6 @@ angular.module('app.items',['app.items.controllers','app.items.directives'])
     url: '/items/:id/:permalink',
     templateUrl: '/modules/items/views/single-item.html',
     controller: 'singleItemController'
-  })
+  });
+  $urlRouterProvider.otherwise('/items');
 }]);

@@ -22,3 +22,13 @@
 .pull-right {
   float: right !important;
 }
+body {
+	background-image: url('../img/colorful-squares.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.login-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f8fc;
+}

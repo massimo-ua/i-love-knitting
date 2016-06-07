@@ -20,3 +20,23 @@ angular.module('app.services')
     return $window.confirm(message);
   }
 }]);
+angular.module('app.services').factory('authService', ['$auth', '$http', 'AUTH_PREFIX', function($auth, $http, AUTH_PREFIX) {
+  return {
+    login: function(email, password) {
+      var user = {};
+      user.email = email;
+      user.password = CryptoJS.SHA256(password).toString();
+      return $auth.login(user, {
+        method: 'POST',
+        url: AUTH_PREFIX+'/login'
+      });
+    },
+    logout: function() {
+      return $auth.logout();
+    },
+    profile: function() {
+      return $http.get(AUTH_PREFIX+'/profile');
+    }
+  }
+}]);
+angular.module('app.services').value('AUTH_PREFIX','http://127.0.0.1:3000/auth');

@@ -11,17 +11,20 @@ angular.module('app.admin',['app.admin.controllers','app.admin.directives'])
   .state('admin.newItem', {
     url: '/items/new',
     controller: 'AdminNewItemController',
-    templateUrl: '/modules/admin/views/new-item.html'
+    templateUrl: '/modules/admin/views/new-item.html',
+    data: {requiredLogin: true}
   })
   .state('admin.editItem', {
     url: '/items/:id/edit',
     controller: 'AdminEditItemController',
-    templateUrl: '/modules/admin/views/edit-item.html'
+    templateUrl: '/modules/admin/views/edit-item.html',
+    data: {requiredLogin: true}
   })
   .state('admin.AllItemsView', {
     url: '',
     controller: 'AdminItemsListController',
-    templateUrl: '/modules/admin/views/all-items-list.html'
+    templateUrl: '/modules/admin/views/all-items-list.html',
+    data: {requiredLogin: true}
   });
 
 }]);
