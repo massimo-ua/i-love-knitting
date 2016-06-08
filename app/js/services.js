@@ -36,6 +36,12 @@ angular.module('app.services').factory('authService', ['$auth', '$http', 'AUTH_P
     },
     profile: function() {
       return $http.get(AUTH_PREFIX+'/profile');
+    },
+    isAuthenticated: function() {
+      return $auth.isAuthenticated();
+    },
+    setStorageType: function(StorageType) {
+      return $auth.setStorageType(StorageType);
     }
   }
 }]);

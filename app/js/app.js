@@ -10,30 +10,34 @@ angular.module('app',[
 	'app.auth',
 	'app.mainmenu'
 	]);
-angular.module('app').run(['$rootScope', '$state', '$auth', function($rootScope, $state, $auth) {
-  $auth.setStorageType('localStorage');
-  if($auth.isAuthenticated() && !$rootScope.userProfile) {
-  	$rootScope.userProfile = {
-  		displayName: 'Logged in username'
-  	}
+angular.module('app').run(['$rootScope', '$state', 'authService', '$http', function($rootScope, $state, authService, $http) {
+  authService.setStorageType('localStorage');
+  if(authService.isAuthenticated() && !$rootScope.userProfile) {
+  	authService.profile().then(function(response){
+  		$rootScope.userProfile = response.data;
+  	}); 
   }
   $rootScope.$on('$stateChangeStart', function(event, toState){
   	var requiredLogin = false;
   	if(toState.data && toState.data.requiredLogin)
   		requiredLogin = true;
-  	if(requiredLogin && !$auth.isAuthenticated()) {
+  	if(requiredLogin && !authService.isAuthenticated()) {
   		event.preventDefault();
   		$state.go('authLogin');
   	}
   });
   $rootScope.$on('USER_LOGIN_EVENT', function() {
-  	$rootScope.userProfile = {
-  		displayName: 'Logged in username'
-  	}
+  	authService.profile().then(function(response){
+  		$rootScope.userProfile = response.data;
+  	}); 
+  });
+  $rootScope.$on('USER_LOGOUT_EVENT', function() {
+  	$rootScope.userProfile = undefined;
   });
   //$state.go('allItems');
 }]);
 angular.module('app').config(['$authProvider', function($authProvider) {
+	//
 	function skipIfLoggedIn($q, $auth) {
 		var deferred = $q.defer();
 		if ($auth.isAuthenticated()) {
