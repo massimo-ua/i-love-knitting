@@ -22,20 +22,20 @@
           <p class="help-block error" ng-show="Form.price.$dirty && Form.price.$invalid">Price Is Mandatory. Minimum value 0.01</p>
         </div>
       </div>
-      <div class="form-group" ng-class="{'has-error': Form.author.$dirty && Form.author.$invalid}">
+      <!-- div class="form-group" ng-class="{'has-error': Form.author.$dirty && Form.author.$invalid}">
         <label for="author" class="col-sm-2 control-label">Item Author</label>
         <div class="col-sm-10">
-          <input type="number" name="author" ng-model="item.author" ng-required="true" min="1" class="form-control" id="author" placeholder="Enter Author ID">
+          <input type="number" name="author" ng-model="item.author" ng-required="true" min="1" class="form-control" id="author" value placeholder="Enter Author ID">
           <p class="help-block error" ng-show="Form.author.$dirty && Form.author.$invalid">Author ID Is Mandatory. Minimum Value 1</p>
         </div>
-      </div>
+      </div -->
       <div class="form-group">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-success" ng-disabled="Form.$invalid">{{ buttonText }}</button>
         </div>
       </div>
       <file-upload uploader-attr="uploader"></file-upload>
-      <div>{{ item }}</div>
+      <!-- div>{{ item }}</div -->
       </div>
         </form>
 </div>

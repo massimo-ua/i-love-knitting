@@ -19,19 +19,20 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="navbar" ng-controller="mainMenuController">
+  <body ng-cloak>
+    <div class="navbar" ng-controller="AuthLoginController">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-md-offset-8">
             <ul class="nav nav-pills">
               <li ui-sref-active="active"><a ui-sref="allItems"><span class="glyphicon glyphicon-home"></span> Home</a></li>
               <li role="presentation"><a href="#">About</a></li>
-              <li ui-sref-active="active" ng-show="!userProfile"><a ui-sref="authLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              <li ng-show="userProfile" role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> {{ userProfile.displayName }} <span class="caret"></span></a>
+              <li class="pull-right" ui-sref-active="active" ng-show="!userProfile"><a ui-sref="authLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li ng-show="userProfile" role="presentation" class="dropdown pull-right">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ userProfile.displayName }} <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li role="presentation"><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                <li role="presentation" ><a ui-sref="admin.AllItemsView"><span class="glyphicon glyphicon-list"></span> My Items</a></li>
                 <li role="separator" class="divider"></li>
                 <li role="presentation"><a ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               </ul>
@@ -46,14 +47,16 @@
       <div ui-view></div>
     </div>
       <!-- Footer -->
-<div>
-      <footer>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-              <p class="text-primary">Copyright &copy; I love knitting 2016</p>
+    <div>
+      <footer class="footer ilk-footer">
+        <div class="container">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <span class="text-primary">Copyright &copy; I love knitting 2016</span>
             </div>
           </div>
-        </footer>
+      </div>
+    </footer>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -80,7 +83,5 @@
     <script src="modules/admin/js/directives.js"></script>
     <script src="modules/auth/authModule.js"></script>
     <script src="modules/auth/js/controllers.js"></script>
-    <script src="modules/mainmenu/mainmenuModule.js"></script>
-    <script src="modules/mainmenu/js/controllers.js"></script>
   </body>
 </html>

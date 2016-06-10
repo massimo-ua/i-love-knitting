@@ -18,4 +18,10 @@ angular.module('app.auth.controllers', [])
 			$scope.buttonText = 'Login';
 		});
 	}
+	$scope.logout = function() {
+		authService.logout().then(function(response){
+			$scope.$emit('USER_LOGOUT_EVENT');
+			$state.go('allItems');
+		});
+	}
 }]);

@@ -7,8 +7,7 @@ angular.module('app',[
 	'app.filters',
 	'app.items',
 	'app.admin',
-	'app.auth',
-	'app.mainmenu'
+	'app.auth'
 	]);
 angular.module('app').run(['$rootScope', '$state', 'authService', '$http', function($rootScope, $state, authService, $http) {
   authService.setStorageType('localStorage');

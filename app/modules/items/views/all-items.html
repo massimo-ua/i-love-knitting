@@ -4,7 +4,7 @@
         <div class="thumbnail all-items-list-item-block">
             <div class="caption">
             <p class="pull-right small">{{ item.datePublished | date: 'dd.MM.yyyy'}}</p>
-            <p class="small">Author: {{ item.author }}</p>
+            <p class="small">Author: {{ item.author.displayName }}</p>
             </div>
             <img ng-src="http://127.0.0.1:3000/files/{{ item.images[0]._id || 'noimage' }}?kind=th" alt="">
             <div class="caption">
@@ -13,7 +13,7 @@
                 <p>{{ item.content | strTruncate:true:300 }}</p>
             </div>
             <div class="ratings">
-                <div class="pull-right">Comments: {{ item.comments.length }}</div>
+                <div class="pull-right">Comments <span class="badge">{{ item.comments.length }}</span></div>
                 <item-rate item-instance="item"></item-rate>
             </div>
         </div>

@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
+  <div class="thumbnail">
     <div class="row">
       <div class="col-sm-12">
         <h5 class="text-info">Comments:</h5>
       </div>
   </div>
   <!-- comment form here -->
-    <div class="thumbnail">
     <ng-form id="commentForm" name="commentForm" >
     <div class="row">
       <div class="col-sm-12">
@@ -34,10 +34,8 @@
 </div>
 </div>
     </ng-form>
-</div>
 <!-- comment form end -->
 <!-- comments list here -->
-
       <div class="thumbnail" ng-repeat="comment in itemInstance.comments">
         <div class="row">
           <div >
@@ -49,5 +47,6 @@
       </div>
     </div>
 <!-- comments list end -->
+    </div>
   </div>
 </div>

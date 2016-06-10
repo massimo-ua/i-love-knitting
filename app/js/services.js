@@ -1,6 +1,6 @@
 'use strict'
 angular.module('app.services',[])
-.factory('Api', ['$resource', 'API_PREFIX', function($resource, API_PREFIX){
+.factory('Api', ['$resource', 'API_PREFIX', 'API_PROFILE_PREFIX', function($resource, API_PREFIX, API_PROFILE_PREFIX){
   return {
     Item: $resource(API_PREFIX+'/items/:id', { id: '@_id' }, {
       update: { method: 'PUT' }
@@ -10,10 +10,12 @@ angular.module('app.services',[])
     }),
     Rating: $resource(API_PREFIX+'/items/:id/ratings', { id: '@item' }, {
       save:   { method: 'POST' },
-    })
+    }),
+    ProfileItem: $resource(API_PROFILE_PREFIX+'/items')
   }
 }]);
 angular.module('app.services').value('API_PREFIX','http://localhost:3000/api');
+angular.module('app.services').value('API_PROFILE_PREFIX','http://localhost:3000/api/profile');
 angular.module('app.services')
 .service('popupService', ['$window', function($window) {
   this.showPopup = function(message) {
