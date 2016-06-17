@@ -14,7 +14,6 @@ angular.module('app').run(['$rootScope', '$state', 'authService', '$http', funct
   authService.setStorageType('localStorage');
 
   $rootScope.$on('$stateChangeStart', function(event, toState){
-  	console.log(toState);
   	if(authService.isAuthenticated()) {
   		if(!$rootScope.userProfile) {
   			authService.profile().then(function(response){
