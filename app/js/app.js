@@ -7,22 +7,34 @@ angular.module('app',[
 	'app.filters',
 	'app.items',
 	'app.admin',
-	'app.auth'
+	'app.auth',
+	'app.users'
 	]);
 angular.module('app').run(['$rootScope', '$state', 'authService', '$http', function($rootScope, $state, authService, $http) {
   authService.setStorageType('localStorage');
-  if(authService.isAuthenticated() && !$rootScope.userProfile) {
-  	authService.profile().then(function(response){
-  		$rootScope.userProfile = response.data;
-  	}); 
-  }
+
   $rootScope.$on('$stateChangeStart', function(event, toState){
-  	var requiredLogin = false;
-  	if(toState.data && toState.data.requiredLogin)
-  		requiredLogin = true;
-  	if(requiredLogin && !authService.isAuthenticated()) {
-  		event.preventDefault();
-  		$state.go('authLogin');
+  	console.log(toState);
+  	if(authService.isAuthenticated()) {
+  		if(!$rootScope.userProfile) {
+  			authService.profile().then(function(response){
+  				$rootScope.userProfile = response.data;
+  				if(toState.data && toState.data.requiredAdmin && !$rootScope.userProfile.isStaff) {
+  					event.preventDefault();
+  					$state.go('authLogin');
+  				}
+  			}); 
+  		}
+  		if(toState.data && toState.data.requiredAdmin && !$rootScope.userProfile.isStaff) {
+  			event.preventDefault();
+  			$state.go('authLogin');
+  		}
+  	}
+  	else {
+  		if(toState.data && (toState.data.requiredLogin || toState.data.requiredAdmin)) {
+  			event.preventDefault();
+  			$state.go('authLogin');
+  		}
   	}
   });
   $rootScope.$on('USER_LOGIN_EVENT', function() {
@@ -33,7 +45,6 @@ angular.module('app').run(['$rootScope', '$state', 'authService', '$http', funct
   $rootScope.$on('USER_LOGOUT_EVENT', function() {
   	$rootScope.userProfile = undefined;
   });
-  //$state.go('allItems');
 }]);
 angular.module('app').config(['$authProvider', function($authProvider) {
 	//

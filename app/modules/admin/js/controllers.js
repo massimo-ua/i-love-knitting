@@ -54,4 +54,7 @@ angular.module('app.admin.controllers',[])
       });
     }
   }
+}])
+.controller('AdminUserListController', ['$scope', 'Api', function($scope, Api) {
+  
 }]);

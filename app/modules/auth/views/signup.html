@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-4 login-container">
+		<div class="panel panel-primary" ng-show="successSignUp">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{successSignUp}}</h3>
+			</div>
+			<div class="panel-body">
+    			Now you need to wait some time before the site administrator will confirm the registration.
+  			</div>
+		</div>
+		<ng-form id="signup-form" name="signupForm" ng-show="!successSignUp">
+			<div ng-show="invalidSignUp" class="alert alert-danger">{{ invalidSignUp }}</div>
+			<div ng-class="{'has-error': signupForm.displayName.$dirty && signupForm.displayName.$invalid}" class="form-group">
+				<label for="displayName" class="text-info">Display Name</label>
+				<input name="displayName" type="displayName" ng-required="true" ng-model="user.displayName" class="form-control" placeholder="Enter your Display Name here" />
+				<div class="help-block error" ng-show="signupForm.displayName.$dirty && signupForm.displayName.$error.required">Please, fill in your Display Name</div>
+			</div>
+			<div ng-class="{'has-error': signupForm.email.$dirty && signupForm.email.$invalid}" class="form-group">
+				<label for="email" class="text-info">Email</label>
+				<input name="email" type="email" ng-required="true" ng-model="user.email" class="form-control" placeholder="Enter your email here" />
+				<div class="help-block error" ng-show="signupForm.email.$dirty && signupForm.email.$error.required">Please, fill in your email</div>
+			</div>
+			<div ng-class="{'has-error': signupForm.password.$dirty && signupForm.password.$invalid}" class="form-group">
+				<label for="password" class="text-info">Password</label>
+				<input name="password" type="password" ng-required="true" ng-model="user.password" class="form-control" placeholder="Enter your password here" />
+				<div class="help-block error" ng-show="signupForm.password.$dirty && signupForm.password.$error.required">Please, fill in your password</div>
+			</div>
+			<div ng-class="{'has-error': passwordmismatch}" class="form-group">
+				<label for="password2" class="text-info">Re-Type Password</label>
+				<input name="password2" type="password" ng-required="true" ng-model="password2" class="form-control" placeholder="Re-type your password here" />
+				<div class="help-block error" ng-show="passwordmismatch">Entered passwords not equal</div>
+			</div>
+			<div class="form-group">
+				<input type="button" class="btn btn-lg btn-primary btn-block" ng-click="signup()" ng-disabled="signupForm.$invalid" value="{{buttonText}}" />
+			</div>
+		</ng-form>
+	</div>
+</div>

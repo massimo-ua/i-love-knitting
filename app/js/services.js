@@ -27,7 +27,13 @@ angular.module('app.services').factory('authService', ['$auth', '$http', 'AUTH_P
     login: function(email, password) {
       var user = {};
       user.email = email;
-      user.password = CryptoJS.SHA256(password).toString();
+      try {
+        user.password = CryptoJS.SHA256(password).toString();
+      }
+      catch(err) {
+        console.log(err);
+        user.password = undefined;
+      }
       return $auth.login(user, {
         method: 'POST',
         url: AUTH_PREFIX+'/login'
@@ -44,6 +50,19 @@ angular.module('app.services').factory('authService', ['$auth', '$http', 'AUTH_P
     },
     setStorageType: function(StorageType) {
       return $auth.setStorageType(StorageType);
+    },
+    signup: function(user) {
+      try {
+        user.password = CryptoJS.SHA256(user.password).toString();
+      }
+      catch(err) {
+        console.log(err);
+        user.password = undefined;
+      }
+      return $auth.signup(user, {
+        method: 'POST',
+        url: AUTH_PREFIX+'/signup'
+      });
     }
   }
 }]);
