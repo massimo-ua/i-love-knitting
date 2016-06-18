@@ -4,7 +4,7 @@ angular.module('app.users.controllers',[])
 	console.log('UsersMainController');
 }])
 .controller('UsersNewController',[function(){
-	console.log('UsersNewController');
+	
 }])
 .controller('UsersAcceptedController',[function(){
 	console.log('UsersAcceptedController');

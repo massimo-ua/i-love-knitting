@@ -31,8 +31,9 @@
               <li ng-show="userProfile" role="presentation" class="dropdown pull-right">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ userProfile.displayName }} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li role="presentation"><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <li role="presentation" ><a ui-sref="admin.AllItemsView"><span class="glyphicon glyphicon-list"></span> My Items</a></li>
+                <li role="presentation" ui-sref-active="active"><a href="#"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+                <li role="presentation" ui-sref-active="active"><a ui-sref="admin.AllItemsView"><i class="fa fa-folder-open-o" aria-hidden="true"></i> My Items</a></li>
+                <li role="presentation" ng-show="userProfile.isStaff" ui-sref-active="active"><a ui-sref="users.new"><i class="fa fa-users" aria-hidden="true"></i> New Users</a></li>
                 <li role="separator" class="divider"></li>
                 <li role="presentation"><a ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               </ul>
@@ -71,6 +72,7 @@
     <script src="libs/angular-animate/angular-animate.min.js"></script>
     <script src="libs/satellizer/satellizer.min.js"></script>
     <script src="libs/sha256/sha256.js"></script>
+    <script src="https://use.fontawesome.com/f9f97b9f60.js"></script>
     <!-- Include application code -->
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>

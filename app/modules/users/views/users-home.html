@@ -1,2 +1,18 @@
-Users Home Template
-<div ui-view></div>
+<div class="row">
+  <div class="col-xs-3">
+    <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Navigation</h3>
+  </div>
+      <div class="panel-body">
+    <ul class="nav nav-pills nav-stacked on-click-make-active">
+        <li ui-sref-active="active"><a ui-sref="users.new">New User Accounts List</a></li>
+        <li ui-sref-active="active"><a ui-sref="users.accepted">Accepted Users Accounts List</a></li>
+    </ul>
+  </div>
+  </div>
+  </div>
+  <div class="col-xs-9 border-left">
+    <div ui-view></div>
+  </div>
+</div>

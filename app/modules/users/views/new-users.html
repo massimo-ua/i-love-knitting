@@ -1,1 +1,29 @@
-New Users Template
+<div class="row">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">New User Accounts List</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+<tr>
+  <th>#</th>
+  <th>Date</th>
+  <th>Title</th>
+  <th>Author</th>
+  <th>Price</th>
+  <th>Tools</th>
+</tr>
+<tr ng-repeat="item in itemsList track by $index">
+  <td>{{ item._id }}</td>
+  <td>{{ item.datePublished | date: 'dd.MM.yyyy'}}</td>
+  <td><a class="alert-link" ui-sref="admin.editItem({id: item._id})" title="Edit Item">{{ item.title | strTruncate:true:70}}</a></td>
+  <td>{{ item.author.displayName }}</td>
+  <td>{{ item.price/100 | currency: '&#8372': 2}}</td>
+  <td>
+    <a class="btn btn-danger btn-xs" ng-click="itemDelete(item)">Delete Item</a>
+  </td>
+</tr>
+</table>
+  </div>
+</div>
+</div>
