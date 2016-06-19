@@ -4,24 +4,23 @@
     <h3 class="panel-title">New User Accounts List</h3>
   </div>
   <div class="panel-body">
+
+  <div class="alert alert-danger" role="alert" ng-show="errorMessage">{{ errorMessage }}</div>
+  <div class="alert alert-success" role="alert" ng-show="successMessage">{{ successMessage }}</div>
     <table class="table table-striped">
 <tr>
-  <th>#</th>
-  <th>Date</th>
-  <th>Title</th>
-  <th>Author</th>
-  <th>Price</th>
-  <th>Tools</th>
+  <th>Id</th>
+  <th>Email</th>
+  <th>Display Name</th>
+  <th>Approve</th>
+  <th>Appoint Admin</th>
 </tr>
-<tr ng-repeat="item in itemsList track by $index">
-  <td>{{ item._id }}</td>
-  <td>{{ item.datePublished | date: 'dd.MM.yyyy'}}</td>
-  <td><a class="alert-link" ui-sref="admin.editItem({id: item._id})" title="Edit Item">{{ item.title | strTruncate:true:70}}</a></td>
-  <td>{{ item.author.displayName }}</td>
-  <td>{{ item.price/100 | currency: '&#8372': 2}}</td>
-  <td>
-    <a class="btn btn-danger btn-xs" ng-click="itemDelete(item)">Delete Item</a>
-  </td>
+<tr ng-repeat="user in users track by $index">
+  <td>{{ user._id }}</td>
+  <td>{{ user.email }}</td>
+  <td>{{ user.displayName }}</a></td>
+  <td><input class="btn btn-default btn-xs" type="button" value="Set" ng-show="!user.approved" ng-click="setApprove(user)" /><input class="btn btn-default btn-xs" type="button" value="Unset" ng-show="user.approved" ng-click="setApprove(user)" /></td>
+  <td><input class="btn btn-default btn-xs" type="button" value="Grant" ng-show="!user.isStaff" ng-click="setStaff(user)" /><input class="btn btn-default btn-xs" type="button" value="Revoke" ng-show="user.isStaff" ng-click="setStaff(user)" /></td>
 </tr>
 </table>
   </div>

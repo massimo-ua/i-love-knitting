@@ -24,10 +24,12 @@ angular.module('app').run(['$rootScope', '$state', 'authService', '$http', funct
   				}
   			}); 
   		}
-  		if(toState.data && toState.data.requiredAdmin && !$rootScope.userProfile.isStaff) {
-  			event.preventDefault();
-  			$state.go('authLogin');
-  		}
+      else {
+  		  if(toState.data && toState.data.requiredAdmin && !$rootScope.userProfile.isStaff) {
+  			 event.preventDefault();
+  			 $state.go('authLogin');
+  		  }
+      }
   	}
   	else {
   		if(toState.data && (toState.data.requiredLogin || toState.data.requiredAdmin)) {
