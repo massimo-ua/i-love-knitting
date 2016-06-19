@@ -1,6 +1,6 @@
 .nav-pills { padding-top: 5px; }
 .nav-bottom-hr { margin-top:5px !important; color: #337ab7; height: 1px; background-color: #337ab7; }
-.all-items-list-item-block { min-height: 450px; }
+.all-items-list-item-block { min-height: 450px; border-radius: 10px; }
 .drop-box {background-color: #F8F8F8; border: 5px dashed #DDD; height: 180px; width: 180px; margin: 5px; padding: 10px; text-align: center;}
 .slide { float: none; margin: 0 auto; }
 .slide.ng-hide-add,
@@ -21,4 +21,19 @@
 }
 .pull-right {
   float: right !important;
+}
+body {
+	background-image: url('../img/colorful-squares.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.login-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f8fc;
+}
+.ilk-footer {
+  bottom: 0;
+  margin-top: 10px;
+  width: 100%;
 }

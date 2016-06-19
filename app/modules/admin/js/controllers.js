@@ -11,6 +11,7 @@ angular.module('app.admin.controllers',[])
   $scope.saveItem = function() {
     //convert price to int to meet Database schema
     $scope.item.price = Math.round($scope.item.price * 100);
+    $scope.item.author = $scope.userProfile;
     $scope.buttonText = "Saving...";
     $scope.item.$save(function(response){
       if(response.status == 'ERR') {
@@ -29,6 +30,7 @@ angular.module('app.admin.controllers',[])
     $scope.item.price = Math.round($scope.item.price / 100, 2);
     $scope.saveItem = function() {
       $scope.item.price = Math.round($scope.item.price * 100);
+      if($scope.item.author == undefined) $scope.item.author = $scope.userProfile; 
       $scope.buttonText = "Updating...";
       $scope.item.$update(function(response) {
         console.log(response);
@@ -40,7 +42,7 @@ angular.module('app.admin.controllers',[])
   $scope.buttonText = "Update";
 }])
 .controller('AdminItemsListController', ['$scope','Api', '$state', 'popupService', function($scope, Api, $state, popupService) {
-	Api.Item.query({}, function(response){
+	Api.ProfileItem.query({}, function(response){
   			$scope.itemsList = response;
   });
   $scope.itemDelete = function(item) {
