@@ -1,5 +1,5 @@
 'use strict'
-angular.module('app.users',['app.users.controllers'])
+angular.module('app.users',['app.users.controllers','app.users.services'])
 .config(['$stateProvider', function($stateProvider){
 	$stateProvider
 	.state('users', {

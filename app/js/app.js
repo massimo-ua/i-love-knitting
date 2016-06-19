@@ -5,6 +5,7 @@ angular.module('app',[
 	'satellizer',
 	'app.services',
 	'app.filters',
+  'app.directives',
 	'app.items',
 	'app.admin',
 	'app.auth',
