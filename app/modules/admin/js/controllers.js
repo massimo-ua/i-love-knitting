@@ -12,6 +12,8 @@ angular.module('app.admin.controllers',[])
     //convert price to int to meet Database schema
     $scope.item.price = Math.round($scope.item.price * 100);
     $scope.item.author = $scope.userProfile;
+    $scope.item.validFrom = $scope.item.validFrom ? new Date($scope.item.validFrom) : undefined;
+    $scope.item.validTo = $scope.item.validTo ? new Date($scope.item.validTo) : undefined;
     $scope.buttonText = "Saving...";
     $scope.item.$save(function(response){
       if(response.status == 'ERR') {
@@ -27,13 +29,16 @@ angular.module('app.admin.controllers',[])
     $scope.item = response;
     $scope.item.rates = undefined;
     $scope.item.comments = undefined;
+    $scope.item.validFrom = $scope.item.validFrom ? new Date($scope.item.validFrom) : undefined;
+    $scope.item.validTo = $scope.item.validTo ? new Date($scope.item.validTo) : undefined;
     $scope.item.price = Math.round($scope.item.price / 100, 2);
     $scope.saveItem = function() {
+      $scope.item.validFrom = $scope.item.validFrom ? new Date($scope.item.validFrom) : undefined;
+      $scope.item.validTo = $scope.item.validTo ? new Date($scope.item.validTo) : undefined;
       $scope.item.price = Math.round($scope.item.price * 100);
       if($scope.item.author == undefined) $scope.item.author = $scope.userProfile; 
       $scope.buttonText = "Updating...";
       $scope.item.$update(function(response) {
-        console.log(response);
         $state.go('admin.AllItemsView');
       });
     }
