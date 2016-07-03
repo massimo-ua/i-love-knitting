@@ -10,7 +10,7 @@
             <div class="caption">
                 <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2}}</h4>
                 <h4><a ui-sref="singleItem({id:item._id, permalink:item.permalink})">{{ item.title | strTruncate:true:70 }}</a></h4>
-                <p>{{ item.content | strTruncate:true:300 }}</p>
+                <p ng-bind-html="item.content | strTruncate:true:300"></p>
             </div>
             <div class="ratings">
                 <div class="pull-right">Comments <span class="badge">{{ item.comments.length }}</span></div>
@@ -19,4 +19,12 @@
         </div>
     </div>
 
+</div>
+<div class="row">
+    <div class="col-sm-2 col-sm-offset-5">
+        <span class="label label-primary" ng-show="loadable" ng-disabled="!loadable" ng-click="loadNext()">{{ buttonText }}</button>
+    </div>
+    <div class="col-sm-2 col-sm-offset-5">
+        <span ng-show="!loadable" class="label label-primary">No more results left</span>
+    </div>
 </div>

@@ -11,7 +11,7 @@
       <div class="form-group" ng-class="{'has-error': Form.content.$dirty && Form.content.$invalid}">
         <label for="content" class="col-sm-2 control-label">Item Content</label>
         <div class="col-sm-10">
-          <textarea class="form-control" rows="3" name="content" ng-model="item.content" ng-required="true" class="form-control" id="content" placeholder="Enter Content Here"></textarea>
+          <textarea ui-tinymce="tinymceOptions" class="form-control" rows="3" name="content" ng-model="item.content" ng-required="true" class="form-control" id="item.content" placeholder="Enter Content Here"></textarea>
           <p class="help-block error" ng-show="Form.content.$dirty && Form.content.$invalid">Content Is Mandatory</p>
         </div>
       </div>
@@ -32,7 +32,7 @@
       <div class="form-group" ng-class="{'has-error': Form.validTo.$dirty && Form.validTo.$invalid}">
         <label for="validTo" class="col-sm-2 control-label">Item To Date</label>
         <div class="col-sm-10">
-          <input type="date" name="validTo" ng-model="item.validTo" class="form-control" id="validTo" placeholder="Enter To Date">
+          <input type="date" name="validTo" ng-model="item.validTo" class="form-control" id="validTo" placeholder="Enter To Date" validatedateformat />
           <p class="help-block error" ng-show="Form.validTo.$dirty && Form.validTo.$invalid">Item To Date must be a valid date value</p>
         </div>
       </div>

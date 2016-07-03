@@ -6,7 +6,7 @@
         <div class="caption-full">
           <h4 class="pull-right">{{ item.price/100 | currency: '&#8372': 2 }}</h4>
           <h4>{{ item.title }}</h4>
-          <p>{{ item.content }}</p>
+          <p ng-bind-html="item.content"></p>
         </div>
         <div class="ratings">
           <div class="pull-right">Comments <span class="badge">{{ item.comments.length }}</span></div>
