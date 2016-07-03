@@ -8,7 +8,7 @@
 				<div class="help-block error" ng-show="loginForm.email.$dirty && loginForm.email.$error.required">Please, fill in your email</div>
 			</div>
 			<div ng-class="{'has-error': loginForm.password.$dirty && loginForm.password.$invalid}" class="form-group">
-				<label for="password" class="text-info">Password</label>
+				<label for="password" class="text-info" translate>LOGIN.FORM.PASSWORD</label>
 				<input name="password" type="password" ng-required="true" ng-model="auth.password" class="form-control" placeholder="Enter your password here" />
 				<div class="help-block error" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">Please, fill in your password</div>
 			</div>

@@ -3,6 +3,7 @@ angular.module('app',[
 	'ngResource',
 	'ui.router',
 	'satellizer',
+  'pascalprecht.translate',
 	'app.services',
 	'app.filters',
   'app.directives',
@@ -13,23 +14,14 @@ angular.module('app',[
 	]);
 angular.module('app').run(['$rootScope', '$state', 'authService', '$http', function($rootScope, $state, authService, $http) {
   authService.setStorageType('localStorage');
-
   $rootScope.$on('$stateChangeStart', function(event, toState){
   	if(authService.isAuthenticated()) {
-  		if(!$rootScope.userProfile) {
-  			authService.profile().then(function(response){
-  				$rootScope.userProfile = response.data;
-  				if(toState.data && toState.data.requiredAdmin && !$rootScope.userProfile.isStaff) {
-  					event.preventDefault();
-  					$state.go('authLogin');
-  				}
-  			}); 
-  		}
-      else {
-  		  if(toState.data && toState.data.requiredAdmin && !$rootScope.userProfile.isStaff) {
-  			 event.preventDefault();
-  			 $state.go('authLogin');
-  		  }
+      if(!$rootScope.userProfile) {
+        $rootScope.userProfile = authService.profile();
+      }
+      if(toState.data && toState.data.requiredAdmin && !authService.isStaff()) {
+        event.preventDefault();
+        $state.go('authLogin');
       }
   	}
   	else {
@@ -40,17 +32,15 @@ angular.module('app').run(['$rootScope', '$state', 'authService', '$http', funct
   	}
   });
   $rootScope.$on('USER_LOGIN_EVENT', function() {
-  	authService.profile().then(function(response){
-  		$rootScope.userProfile = response.data;
-  	}); 
+  		$rootScope.userProfile = authService.profile(); 
   });
   $rootScope.$on('USER_LOGOUT_EVENT', function() {
   	$rootScope.userProfile = undefined;
   });
 }]);
-angular.module('app').config(['$authProvider', function($authProvider) {
+angular.module('app').config(['$authProvider', '$translateProvider', function($authProvider, $translateProvider) {
 	//
-	function skipIfLoggedIn($q, $auth) {
+	/*function skipIfLoggedIn($q, $auth) {
 		var deferred = $q.defer();
 		if ($auth.isAuthenticated()) {
 			deferred.reject();
@@ -68,5 +58,17 @@ angular.module('app').config(['$authProvider', function($authProvider) {
 			$state.go('authLogin');
 		}
 		return deferred.promise;
-	}
+	}*/
+$translateProvider.useStaticFilesLoader({
+    files: [{
+        prefix: '/i18n/locale-',
+        suffix: '.json'
+    },
+    {
+        prefix: '/i18n/locale-',
+        suffix: '.json'
+    }]
+});
+$translateProvider.preferredLanguage('en');
+$translateProvider.useSanitizeValueStrategy('sanitize');
 }]);

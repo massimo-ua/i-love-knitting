@@ -46,10 +46,15 @@ angular.module('app.services').factory('authService', ['$auth', '$http', 'AUTH_P
       return $auth.logout();
     },
     profile: function() {
-      return $http.get(AUTH_PREFIX+'/profile');
+      //return $http.get(AUTH_PREFIX+'/profile');
+      console.log($auth.getPayload());
+      return $auth.getPayload();
     },
     isAuthenticated: function() {
       return $auth.isAuthenticated();
+    },
+    isStaff: function() {
+      return $auth.getPayload().isStaff || false;
     },
     setStorageType: function(StorageType) {
       return $auth.setStorageType(StorageType);
